@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { LayoutDashboard, Users, BookOpen, Tag, Menu, X, LogOut } from "lucide-react";
+import { LayoutDashboard, BookOpen, PlusIcon, Menu, X, LogOut } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -11,10 +11,9 @@ import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 
 const sidebarLinks = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/users", label: "Users", icon: Users },
-  { href: "/admin/courses", label: "Courses", icon: BookOpen },
-  { href: "/admin/categories", label: "Categories", icon: Tag },
+  { href: "/instructor", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/instructor/courses", label: "My Courses", icon: BookOpen },
+  { href: "/instructor/courses/new", label: "Create Course", icon: PlusIcon },
 ];
 
 function SidebarContent({ onNav }: { onNav?: () => void }) {
@@ -31,7 +30,7 @@ function SidebarContent({ onNav }: { onNav?: () => void }) {
     <div className="flex h-full flex-col">
       <div className="flex h-16 items-center border-b border-border px-4">
         <Logo size="sm" showText={false} />
-        <span className="ml-2 text-sm font-semibold text-foreground">Admin</span>
+        <span className="ml-2 text-sm font-semibold text-foreground">Instructor</span>
       </div>
 
       <nav className="flex-1 space-y-1 px-3 py-4">
@@ -71,7 +70,7 @@ function SidebarContent({ onNav }: { onNav?: () => void }) {
   );
 }
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default function InstructorLayout({ children }: { children: React.ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -92,7 +91,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       {mobileOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="fixed inset-0 bg-black/50" onClick={() => setMobileOpen(false)} aria-hidden="true" />
+          <div
+            className="fixed inset-0 bg-black/50"
+            onClick={() => setMobileOpen(false)}
+            aria-hidden="true"
+          />
           <div className="fixed inset-y-0 left-0 w-64 bg-background shadow-xl">
             <div className="flex h-16 items-center justify-end border-b border-border px-4">
               <button

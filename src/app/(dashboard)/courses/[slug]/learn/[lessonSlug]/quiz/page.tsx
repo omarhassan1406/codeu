@@ -12,7 +12,6 @@ import { useQuizByLesson, useSubmitQuiz } from "@/features/quizzes/hooks/useQuiz
 
 export default function QuizPage() {
   const { slug, lessonSlug } = useParams<{ slug: string; lessonSlug: string }>();
-  const router = useRouter();
   const { data: course } = useCourseBySlug(slug);
 
   const allLessons =

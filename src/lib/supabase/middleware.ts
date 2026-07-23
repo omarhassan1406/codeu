@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 import { env } from "@/config/env";
 
-const protectedRoutes = ["/dashboard", "/admin"];
+const protectedRoutes = ["/dashboard", "/admin", "/instructor", "/checkout"];
 const learnPattern = /^\/courses\/.+\/learn\//;
 const authRoutes = ["/login", "/register", "/forgot-password"];
 
@@ -42,6 +42,25 @@ export async function updateSession(request: NextRequest) {
 
   if (isAuthPage && user) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
+
+  if (user && (pathname.startsWith("/instructor") || pathname.startsWith("/admin"))) {
+    const { data: profile } = await supabase
+      .from("users")
+      .select("role")
+      .eq("id", user.id)
+      .single();
+
+    if (pathname.startsWith("/admin") && (!profile || profile.role !== "admin")) {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+
+    if (
+      pathname.startsWith("/instructor") &&
+      (!profile || (profile.role !== "instructor" && profile.role !== "admin"))
+    ) {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
   }
 
   return supabaseResponse;
