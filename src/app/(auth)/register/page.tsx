@@ -32,8 +32,9 @@ export default function RegisterPage() {
       await registerUser(data);
       toast.success("Account created! Check your email to verify.");
       router.push("/login");
-    } catch {
-      toast.error("An account with this email may already exist");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Registration failed. Please try again.";
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
