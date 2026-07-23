@@ -1,0 +1,41 @@
+# Supabase Configuration (Local Test Values)
+NEXT_PUBLIC_SUPABASE_URL=https://vpttiesqgxatgocbpoor.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwdHRpZXNxZ3hhdGdvY2Jwb29yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4MzA2NjMsImV4cCI6MjEwMDQwNjY2M30.RCEd22PzqMHZA9pM4RgOozf4MlC9ZxNo9K4kp7rwsoQ
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwdHRpZXNxZ3hhdGdvY2Jwb29yIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDgzMDY2MywiZXhwIjoyMTAwNDA2NjYzfQ.K_vrKFjdoDErNPTwqMFveh5oLSNIkiKXI32xD9zc2IU
+
+# App URL
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+
+
+
+
+2️⃣ ⚠️ ملاحظة هامة جداً بخصوص ملف .env.local
+ملف المفاتيح .env.local مش بيرتفع على GitHub حمايةً للبيانات والحسابات.
+
+قبل ما تقفل الجهاز، انسخ الأربعة أسطر الموجودة جواه احفظهم عندك في نوت أو رسالة عشان تحطهم في الجهاز الجديد:
+
+مقتطف الرمز
+NEXT_PUBLIC_SUPABASE_URL=https://vpttiesqgxatgocbpoor.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+3️⃣ إزاي تكمل من الجهاز الجديد؟ (لما تقعد عليه)
+أول ما تقعد على الجهاز التاني:
+
+افتح الـ Terminal واعمل Clone للمشروع:
+
+Bash
+git clone https://github.com/omarhassan1406/codeu.git
+cd codeu
+نزل المكتبات (Packages):
+
+Bash
+npm install
+انشئ ملف .env.local في مجلد المشروع وانسخ فيه المفاتيح الـ 4.
+
+شغل المشروع فوراً:
+
+Bash
+npm run dev
+عمل كبير ومجهود محترم جداً.. المشروع بقى مبني بهيكلية قوية ومعمارية حديثة (Next.js 16 + Supabase). أراكم في الجلسة القادمة لاستكمال الرحلة! 🚀💪
