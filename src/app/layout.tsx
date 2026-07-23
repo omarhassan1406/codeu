@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
+import { AppProviders } from "@/providers/app-providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -40,6 +42,15 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,7 +64,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-neutral-50 font-sans text-neutral-900 antialiased">
-        {children}
+        <AppProviders>
+          {children}
+          <Toaster position="top-right" richColors closeButton duration={4000} />
+        </AppProviders>
       </body>
     </html>
   );
