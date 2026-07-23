@@ -3,6 +3,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { env } from "@/config/env";
 
 const protectedRoutes = ["/dashboard", "/admin"];
+const learnPattern = /^\/courses\/.+\/learn\//;
 const authRoutes = ["/login", "/register", "/forgot-password"];
 
 export async function updateSession(request: NextRequest) {
@@ -29,7 +30,8 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const { pathname } = request.nextUrl;
-  const isProtected = protectedRoutes.some((route) => pathname.startsWith(route));
+  const isProtected =
+    protectedRoutes.some((route) => pathname.startsWith(route)) || learnPattern.test(pathname);
   const isAuthPage = authRoutes.some((route) => pathname === route);
 
   if (isProtected && !user) {

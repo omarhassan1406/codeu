@@ -56,6 +56,7 @@ export interface CourseDetailData {
       title: string;
       slug: string;
       type: string;
+      video_url: string | null;
       duration_seconds: number | null;
       is_free_preview: boolean;
       sort_order: number;

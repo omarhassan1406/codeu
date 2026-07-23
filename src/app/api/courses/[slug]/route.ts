@@ -92,6 +92,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
         title: l.title,
         slug: l.slug,
         type: l.type,
+        video_url: l.video_url,
         duration_seconds: l.duration_seconds,
         is_free_preview: l.is_free_preview,
         sort_order: l.sort_order,
