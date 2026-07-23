@@ -39,3 +39,33 @@ npm install
 Bash
 npm run dev
 عمل كبير ومجهود محترم جداً.. المشروع بقى مبني بهيكلية قوية ومعمارية حديثة (Next.js 16 + Supabase). أراكم في الجلسة القادمة لاستكمال الرحلة! 🚀💪
+
+
+
+برومبت لشات جى بى تى او جيمناى
+
+مرحباً! بنكمل شغلنا على مشروع منصة التعلم الإلكتروني **CodeU Academy** (SaaS Online Academy Platform).
+
+📌 **الملف التقني والحالة الحالية (Project Context):**
+- **Tech Stack:** Next.js 16 (Turbopack), Supabase SSR, Tailwind CSS v4, shadcn/ui v4, TypeScript Strict Mode.
+- **GitHub Repo:** `omarhassan1406/codeu` (main branch up to date).
+- **Deployment:** Vercel (`codeu-xi.vercel.app`).
+- **Database:** Supabase (`codeu-academy`) — 17 Tables, RLS, Triggers, & Seed Data successfully executed.
+
+📌 **ما تم إنجازه بالكامل (Phases 1 to 6 — 25 Routes):**
+1. **Phases 1 & 2:** الهيكلية العامة، ثيم الألوان (Electric Orange)، الربط مع Supabase SSR، والجداول والـ RLS.
+2. **Phases 3 & 4:** صفحات الكتالوج، مشغل الدروس LMS، المحاكي والكوويزات، ولوحة طالب متكاملة.
+3. **Phase 5:** استوديو المحاضر (`/instructor/*`) مع منشئ كورس من 4 خطوات (Basic, Curriculum, Quiz, Settings).
+4. **Phase 6:** لوحة تحكم الأدمن (`/admin/*`) وإدارة المستخدمين والمنصة + مسار الشراء والتسجيل التلقائي (`/checkout/*`).
+5. **Deployment:** نشر المشروع بنجاح على Vercel.
+
+📌 **المشكلة الحالية المعلقة (أول شيء سنقوم بإصلاحه):**
+عند فتح صفحة التسجيل `/register` يظهر خطأ `Invalid environment variables` عند `src/config/env.ts` بسبب قيام Zod بفحص متغيرات السيرفر مثل `SUPABASE_SERVICE_ROLE_KEY` في متصفح العميل (Client Runtime)، مما يمنع إنشاء حسابات جديدة بسهولة.
+
+📌 **المطلوب في هذه الجلسة:**
+1. توجيه opencode لإصلاح `src/config/env.ts` للتمييز بين بيئة العميل والسيرفر.
+2. تحسين رسائل خطأ الـ Sign Up في `src/features/auth/` لعرض الخطأ القادم من Supabase بدقة.
+3. التأكد من عمل التسجيل والتصفح بنسبة 100% على Vercel.
+4. التخطيط للخطوة التالية (تجهيز تطبيق الموبايل Flutter / ربط بوابة دفع حقيقية).
+
+جاهز للانطلاق! أخرج لي برومبت opencode لإصلاح `env.ts` والـ Sign Up أولاً.
