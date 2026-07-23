@@ -1,6 +1,7 @@
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
+import { cloneElement, isValidElement, type ReactElement } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -45,6 +46,7 @@ const buttonVariants = cva(
 type ButtonProps = ButtonPrimitive.Props &
   VariantProps<typeof buttonVariants> & {
     loading?: boolean;
+    asChild?: boolean;
   };
 
 function Button({
@@ -53,9 +55,17 @@ function Button({
   size = "default",
   loading,
   disabled,
+  asChild,
   children,
   ...props
 }: ButtonProps) {
+  if (asChild && isValidElement<{ className?: string }>(children)) {
+    return cloneElement(children, {
+      className: cn(buttonVariants({ variant, size, className }), children.props.className),
+      ...props,
+    } as Record<string, unknown>);
+  }
+
   return (
     <ButtonPrimitive
       data-slot="button"
